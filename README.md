@@ -12,7 +12,7 @@ NFT marketplace from scratch: frontend, data storage, and smart contracts!. This
 
 ## Deployment
 
-[Vercel]()
+[Vercel](https://funky-town-marketplace.vercel.app/)
 
 ## Demo
 
