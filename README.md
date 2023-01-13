@@ -21,8 +21,8 @@ NFT marketplace from scratch: frontend, data storage, and smart contracts!. This
 ## Installation
 
 ```bash
-git clone https://github.com/OMGWINNING/NFT-Marketplace-Tutorial
-cd NFT-Marketplace-Tutorial
+git clone project
+cd into project
 npm install
 npm start
 ```
