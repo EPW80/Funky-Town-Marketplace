@@ -1,14 +1,22 @@
 # Funky Town Marketplace
 
-NFT marketplace from scratch: frontend, data storage, and smart contracts. This is an application focusing on different art pieces apart of a collection called Funky Town. The application features metamask connectivity allowing the user to connect their wallet. The application also provides the ability to upload NFT's from a user folder.
+Welcome to Funky Town Marketplace, a fully-featured NFT (Non-Fungible Tokens) marketplace. This application is designed for showcasing different art pieces that are part of a collection called "Funky Town". Key features include MetaMask connectivity for wallet integration and the ability to upload NFTs from a user's folder.
 
 ## Built with
 
-- JavaScript
+- JavaScript: The scripting language for creating dynamic web content.
 
-- Tailwind
+- Tailwind: A utility-first CSS framework for rapidly building custom user interfaces.
 
-- Solidity
+- Solidity: An object-oriented programming language for writing smart contracts.
+
+## Features
+
+- Wallet Integration: Connect with MetaMask to interact with the blockchain.
+
+- NFT Upload: Users can upload their own NFTs from their local folder.
+
+- Interactive User Interface: User-friendly and visually appealing design for easy navigation.
 
 ## Deployment
 
@@ -20,10 +28,17 @@ NFT marketplace from scratch: frontend, data storage, and smart contracts. This 
 
 ## Installation
 
-```bash
+```
+# Clone the repository
 git clone project
-cd into project
+
+# Navigate into the project directory
+cd project
+
+# Install dependencies
 npm install
+
+# Start the application
 npm start
 ```
 

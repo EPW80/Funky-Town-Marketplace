@@ -1,21 +1,20 @@
-import logo from '../logo_3.png';
-import fullLogo from '../full_logo.png';
+import logo from "../logo_3.png";
+import fullLogo from "../full_logo.png";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
 } from "react-router-dom";
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 function Navbar() {
-
   const [connected, toggleConnect] = useState(false);
   const location = useLocation();
-  const [currAddress, updateAddress] = useState('0x');
+  const [currAddress, updateAddress] = useState("0x");
 
   async function getAddress() {
     const ethers = require("ethers");
@@ -26,7 +25,7 @@ function Navbar() {
   }
 
   function updateButton() {
-    const ethereumButton = document.querySelector('.enableEthereumButton');
+    const ethereumButton = document.querySelector(".enableEthereumButton");
     ethereumButton.textContent = "Connected";
     ethereumButton.classList.remove("hover:bg-blue-70");
     ethereumButton.classList.remove("bg-blue-500");
@@ -35,21 +34,21 @@ function Navbar() {
   }
 
   async function connectWebsite() {
-
-    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
-    if (chainId !== '0x5') {
+    const chainId = await window.ethereum.request({ method: "eth_chainId" });
+    if (chainId !== "0x5") {
       //alert('Incorrect network! Switch your metamask network to Rinkeby');
       await window.ethereum.request({
-        method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x5' }],
-      })
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: "0x5" }],
+      });
     }
-    await window.ethereum.request({ method: 'eth_requestAccounts' })
+    await window.ethereum
+      .request({ method: "eth_requestAccounts" })
       .then(() => {
         updateButton();
         console.log("here");
         getAddress();
-        window.location.replace(location.pathname)
+        window.location.replace(location.pathname);
       });
   }
 
@@ -62,61 +61,75 @@ function Navbar() {
       updateButton();
     }
 
-    window.ethereum.on('accountsChanged', function (accounts) {
-      window.location.replace(location.pathname)
-    })
+    window.ethereum.on("accountsChanged", function (accounts) {
+      window.location.replace(location.pathname);
+    });
   });
 
   return (
     <div className="">
       <nav className="w-screen">
-        <ul className='flex items-end justify-between py-3 bg-transparent text-white pr-5'>
-          <li className='flex items-end ml-5 pb-2'>
+        <ul className="flex items-end justify-between py-3 bg-transparent text-white pr-5">
+          <li className="flex items-end ml-5 pb-2">
             <Link to="/">
-              <img src={fullLogo} alt="" width={60} height={60} className="inline-block -mt-2 rounded-lg" />
-              <div className='inline-block font-bold text-xl ml-2'>
+              <img
+                src={fullLogo}
+                alt=""
+                width={60}
+                height={60}
+                className="inline-block -mt-2 rounded-lg"
+              />
+              <div className="inline-block font-bold text-xl ml-2">
                 Funky Town Marketplace
               </div>
             </Link>
           </li>
-          <li className='w-2/6'>
-            <ul className='lg:flex justify-between font-bold mr-10 text-lg'>
-              {location.pathname === "/" ?
-                <li className='border-b-2 hover:pb-0 p-2'>
+          <li className="w-2/6">
+            <ul className="lg:flex justify-between font-bold mr-10 text-lg">
+              {location.pathname === "/" ? (
+                <li className="border-b-2 hover:pb-0 p-2">
                   <Link to="/">Marketplace</Link>
                 </li>
-                :
-                <li className='hover:border-b-2 hover:pb-0 p-2'>
+              ) : (
+                <li className="hover:border-b-2 hover:pb-0 p-2">
                   <Link to="/">Marketplace</Link>
                 </li>
-              }
-              {location.pathname === "/sellNFT" ?
-                <li className='border-b-2 hover:pb-0 p-2'>
+              )}
+              {location.pathname === "/sellNFT" ? (
+                <li className="border-b-2 hover:pb-0 p-2">
                   <Link to="/sellNFT">List My NFT</Link>
                 </li>
-                :
-                <li className='hover:border-b-2 hover:pb-0 p-2'>
+              ) : (
+                <li className="hover:border-b-2 hover:pb-0 p-2">
                   <Link to="/sellNFT">List My NFT</Link>
                 </li>
-              }
-              {location.pathname === "/profile" ?
-                <li className='border-b-2 hover:pb-0 p-2'>
+              )}
+              {location.pathname === "/profile" ? (
+                <li className="border-b-2 hover:pb-0 p-2">
                   <Link to="/profile">Profile</Link>
                 </li>
-                :
-                <li className='hover:border-b-2 hover:pb-0 p-2'>
+              ) : (
+                <li className="hover:border-b-2 hover:pb-0 p-2">
                   <Link to="/profile">Profile</Link>
                 </li>
-              }
+              )}
               <li>
-                <button className="enableEthereumButton bg-purple-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded text-sm" onClick={connectWebsite}>{connected ? "Connect" : "Connected Wallet"}</button>
+                <button
+                  className="enableEthereumButton bg-purple-300 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded text-sm"
+                  onClick={connectWebsite}
+                >
+                  {connected ? "Connect" : "Connected Wallet"}
+                </button>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
-      <div className='text-white text-bold text-right mr-10 text-sm'>
-        {currAddress !== "0x" ? "Connected to" : "Not Connected. Please login to view NFTs"} {currAddress !== "0x" ? (currAddress.substring(0, 15) + '...') : ""}
+      <div className="text-white text-bold text-right mr-10 text-sm">
+        {currAddress !== "0x"
+          ? "Connected to"
+          : "Not Connected. Please login to view NFTs"}{" "}
+        {currAddress !== "0x" ? currAddress.substring(0, 15) + "..." : ""}
       </div>
     </div>
   );
